@@ -1,4 +1,15 @@
 \chapter*{Abstract}
 
+We present OCaml Blockly, OCaml visual programming editor based on Blockly.
+Blockly is a JavaScript library for creating visual block programming languages.
+Blockly makes it impossible to cause a syntax error since constructed set of blocks always represents an abstract syntax tree.
+However, Blockly does not deal with semantic errors, so it allows users to build blocks which does not compile.
 
-{\bf Keywords:}\ 
+OCaml Blockly provides UI which prevents users from constructing blocks with any compile errors.
+Blocks in OCaml Blockly change their colors and shapes using their data types inferred by its Hindley–Milner type system.
+OCaml Blockly visually represents information of variables such as their types, bindings, and scopes.
+Additionally, we supports bidirectional converter between OCaml code and blocks in OCaml Blockly.
+It helps beginners get used to text-based coding.
+We show the design and implementation of OCaml Blockly and discuss future tasks toward practical uses.
+
+{\bf Keywords:}\ Visual programming editor, OCaml, JavaScript, Blockly
