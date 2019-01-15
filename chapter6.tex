@@ -45,9 +45,7 @@ let rec pi_impl n d =
 let pi n = 2.0 *. pi_impl (n *. 2.0) (n *. 2.0 +. 1.0);;
 let pi_exp = pi 9000.
 \end{verbatimtab}
-\vspace{-2.0zh}
 \caption{ウォリス積を利用して円周率を計算する OCaml プログラム\label{OCamlWallis}}
-\vspace{0.6zh}
 
  \centering
  \includegraphics[keepaspectratio, scale=0.4]{img/pi.png}
