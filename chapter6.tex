@@ -37,6 +37,7 @@ OCamlコンパイラのパッケージcompiler-libsを利用した．
 
 \begin{figure}[h]
 \centering
+\vspace{2zh}
 \begin{verbatimtab}[2]
 let rec pi_impl n d =
   if n > 0.0
@@ -45,9 +46,11 @@ let rec pi_impl n d =
 let pi n = 2.0 *. pi_impl (n *. 2.0) (n *. 2.0 +. 1.0);;
 let pi_exp = pi 9000.
 \end{verbatimtab}
+\vspace{-1zh}
 \caption{ウォリス積を利用して円周率を計算する OCaml プログラム\label{OCamlWallis}}
 
  \centering
+\vspace{2zh}
  \includegraphics[keepaspectratio, scale=0.35]{img/pi.png}
  \caption{図\ref{OCamlWallis}に現したウォリス積を利用したOCamlプログラムをブロックに自動で変換したもの．
 型の整合性，変数束縛ともに反映されている．\label{fig:piOCaml}}
