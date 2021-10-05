@@ -24,6 +24,7 @@ let多相や型の単一化のリセット機能を実装し，型推論を拡�
 実装方法については，次章にてそれぞれ詳しく説明する．
 
 \section {変数束縛}
+
 変数スコープや変数束縛の関係は，関数型言語初学者にとって，理解しにくいものの1つと言える．
 多くの命令型言語では，変数宣言文と同列にある閉じ括弧{\tt \}}が出現するまでの文がスコープとなるのに対し，
 関数型言語では，OCamlやHaskellのletのように，in内の式が終了するまでがスコープとなる．
@@ -55,20 +56,18 @@ OCamlのプログラムとしてはどちらも正当だが，
 束縛関係を把握しやすいようになっている(図\ref{fig:dupFooHover})．
 スコープに従ったアルファ変換(変数名の変更)も行うことができる．
 
-\begin{figure}[h]
+\begin{figure}[H]
  \centering
  \includegraphics[keepaspectratio, scale=0.3]{img/boundFoo0.png}
  \includegraphics[keepaspectratio, scale=0.3]{img/boundFoo1.png}
  \includegraphics[keepaspectratio, scale=0.3]{img/boundFoo2.png}
  \caption{変数ブロックを生成する流れ．変数宣言を囲うように描画されたブロック(左)にカーソルを合わせて(中)ドラッグする(右)と，
 変数ブロックの生成を行うことができる．\label{fig:boundFoo}}
-
  \includegraphics[keepaspectratio, scale=0.3]{img/refBlock0.png}
  \includegraphics[keepaspectratio, scale=0.3]{img/refBlock1.png}
  \includegraphics[keepaspectratio, scale=0.3]{img/refBlock2.png}
  \caption{変数ブロック「{\tt foo}」を生成後にドラッグしたまま動かしたときのブロックの様子．
 正しく変数ブロックが束縛されない場合はブロックを不透明に表示する．\label{fig:refBlockFoo}}
-
  \includegraphics[keepaspectratio, scale=0.3]{img/dupFoo0.png}
  \includegraphics[keepaspectratio, scale=0.3]{img/dupFoo1.png}
  \caption{外側の変数宣言部分から生成した変数ブロック(左)と，
@@ -79,10 +78,17 @@ OCamlのプログラムとしてはどちらも正当だが，
  \caption{右下の変数ブロックをホバーしたときの反応．束縛変数，
 束縛されている変数がオレンジ色にハイライトされる．\label{fig:dupFooHover}}
 \end{figure}
+\clearpage
 
 \section {スコープお砂場}
 
 変数ブロックや変数ブロックを含むブロックをスコープが有効な場所にしか置けないという制約を設けると，ブロックを自由な場所に置き，好きな順番でブロックを組み立てられるという，Blocklyにあった利点を損なってしまう．これを避けるため，本研究では，スコープチェックのついた遊び場を設け，これを「スコープお砂場」と命名した．使用例を図\ref{fig:osunaba}に示す．
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[keepaspectratio, scale=0.3]{img/osunaba3.png}
+ \caption{スコープお砂場の例．ブロック上の赤いアイコンをクリックするとポップアップが現れる．スコープで参照できる変数ブロックの一覧を持つサイドメニューが左側に見れ，ブロックの生成が行える．スコープお砂場内で，変数ブロックをどんな型として扱うかによって，変数宣言のブロックの型も変化する．\label{fig:osunaba}}
+\end{figure}
 
 スコープお砂場は新しい変数が加わりうる各入力コネクタに紐づいており
 \footnote[2]{図\ref{fig:osunaba}では，inの直前のスコープにもお砂場のためのアイコンが表示されているが，これはletに引数を追加する場合やrecフラグを有効にした場合に必要になる．}，
@@ -98,13 +104,6 @@ OCamlのプログラムとしてはどちらも正当だが，
 お砂場内に変数ブロック「{\tt foo}」が存在しているためである．
 
 % 一番大変だったわりに説明がすくねえ
-\begin{figure}[h]
- \centering
- \includegraphics[keepaspectratio, scale=0.3]{img/osunaba3.png}
- \caption{スコープお砂場の例．ライフルのスコープを模したアイコンをクリックするとポップアップが現れる．
-スコープで参照できる変数ブロックの一覧が見れ，ブロックの生成も行える．
-スコープお砂場内で，変数ブロックをどんな型として扱うかによって，変数宣言のブロックの型も変化する．\label{fig:osunaba}}
-\end{figure}
 
 \section {let多相を含んだ型システム}
 
@@ -127,7 +126,7 @@ let多相を含む型システムを実装した．
  \centering
  \includegraphics[keepaspectratio, scale=0.4]{img/errorIntFloat.png}
  \includegraphics[keepaspectratio, scale=0.4]{img/errorUnbound.png}
-  \includegraphics[keepaspectratio, scale=0.4]{img/errorDupVar.png}
+  \includegraphics[keepaspectratio, scale=0.4]{img/errorDupVar2.png}
  \caption{エラーツールチップの例．\label{fig:errorOutput}}
 \end{figure}
 
